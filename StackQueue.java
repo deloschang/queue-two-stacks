@@ -5,13 +5,19 @@ package SA6;
  *
  * Implements queue using two stacks
  * @author Delos Chang - 1/25/13
+ * header comments for functions copied from CS10Queue.java
  */
 
 public class StackQueue<T> implements CS10Queue<T> {
 	
+	// declare 2 stacks for implementation
 	private ArrayListStack<T> inStack = new ArrayListStack<T>();
 	private ArrayListStack<T> outStack = new ArrayListStack<T>();
 	
+	/**
+	 * Add item to back of queue
+	 * @return the item added to the rear of the queue
+	 */
 	public void enqueue(T item){
 		inStack.push(item);
 	}
