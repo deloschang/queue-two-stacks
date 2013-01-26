@@ -9,25 +9,41 @@ package SA6;
 
 public class StackQueue<T> implements CS10Queue<T> {
 	
-	public void enqueue(T item);
+	private ArrayListStack<T> inStack = new ArrayListStack<T>();
+	private ArrayListStack<T> outStack = new ArrayListStack<T>();
+	
+	public void enqueue(T item){
+		inStack.push(item);
+	}
 	
 	/**
 	 * Remove item from front of queue
 	 * @return the item removed from the front of the queue
 	 */
-	public T dequeue();
+	public T dequeue(){
+		if (outStack.isEmpty()){
+			while(!inStack.isEmpty()){
+				outStack.push(inStack.pop());
+			}
+		}
+		return outStack.pop();
+	}
 	
 	/**
 	 * Return the item at the front of queue, but do not remove it
 	 * @return the item at the front of the queue
 	 */
-	public T front();
+	public T front(){
+		return outStack.peek();
+	}
 	
 	/**
 	 * Is the queue empty?
 	 * @return true iff queue is empty
 	 */
-	public boolean isEmpty();
+	public boolean isEmpty(){
+		return inStack.isEmpty() && outStack.isEmpty();
+	}
 	
 	/**
 	 * A testing program
